@@ -1,0 +1,11 @@
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title text-tomato">{{employee.name | titlecase}}  {{employee.surname | titlecase}}</h5>
+      <p>Email : <span class="text-tomato">{{employee.email}}</span></p>
+      <p>Address : <span class="text-tomato">{{employee.address}}</span></p>
+      <p>Qualification : <span class="text-tomato">{{employee.qualification}}</span></p>
+      <p>Contact Number : <span class="text-tomato">{{employee.contactNumber}}</span></p>
+      <p>Department Id : <span class="text-tomato">{{employee.departmentId}}</span></p>
+      <button class="btn btn-tomato" routerLink="/employee">Back to List</button>
+    </div>
+  </div>
