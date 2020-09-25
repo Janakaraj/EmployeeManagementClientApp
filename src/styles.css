@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+.btn-tomato{
+    background-color: tomato;
+}.navButton{
+    margin:5px;
+    padding:5px;
+}
+.navButton:hover{
+    background-color: red;
+}
+.text-tomato{
+    color:tomato !important
+}
+a.text-primary:focus,
+a.text-primary:hover{
+    color:tomato!important
+}
+.btn-outline-tomato{color:#fff;border-color:tomato}
+.btn-outline-tomato:hover{color:#fff;background-color:tomato;border-color:toamto}
+.btn-outline-primary.focus,
+.btn-outline-primary:focus{box-shadow:0 0 0 .2rem rgba(0,123,255,.5)}
+.btn-outline-primary.disabled,
+.btn-outline-primary:disabled{color:tomato;background-color:transparent}
+.btn-outline-primary:not(:disabled):not(.disabled).active,
+.btn-outline-primary:not(:disabled):not(.disabled):active,.show>
+.btn-outline-primary.dropdown-toggle{color:#fff;background-color:tomato;border-color:tomato}
+.btn-outline-primary:not(:disabled):not(.disabled).active:focus,
+.btn-outline-primary:not(:disabled):not(.disabled):active:focus,.show>
+.btn-outline-primary.dropdown-toggle:focus{box-shadow:0 0 0 .2rem rgba(0,123,255,.5)}
