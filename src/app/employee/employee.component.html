@@ -1,0 +1,64 @@
+<div>
+    <h1>{{title}}</h1>
+    <button class="btn btn-tomato">Create New Employee</button>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Surname
+                </th>
+                <th>
+                    Address
+                </th>
+                <th>
+                    Qualification
+                </th>
+                <th>
+                    ContactNumber
+                </th>
+                <th>
+                    Department
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let employee of employees">
+                <td>
+                    {{employee.email}}
+                </td>
+                <td>
+                    {{employee.name | titlecase}}
+                </td>
+                <td>
+                    {{employee.surname | titlecase}}
+                </td>
+                <td>
+                    {{employee.address}}
+                </td>
+                <td>
+                    {{employee.qualification}}
+                </td>
+                <td>
+                    {{employee.contactNumber}}
+                </td>
+                <td>
+                    {{employee.departmentId}}
+                </td>
+                <td>
+                    <a [routerLink]="['/profile', employee.id]">Details</a>
+                    <span> | </span>
+                    <a>Edit</a>
+                    <span> | </span>
+                    <a>Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
