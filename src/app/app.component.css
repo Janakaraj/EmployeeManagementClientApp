@@ -2,6 +2,12 @@
 margin:1rem;
 padding:1rem;
 }
+.nav-link{
+    color:#fff !important;
+}
 .nav-link:hover{
-color: #fff !important;
+color: tomato !important;
+}
+.active{
+    color: tomato !important;
 }
