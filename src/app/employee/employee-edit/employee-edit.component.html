@@ -1,0 +1,48 @@
+<h1>Edit</h1>
+<div id="notify"></div>
+<h4>Employee</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form #form="ngForm">
+            <div class="form-group">
+                <input type="number" id="Id" name="Id" class="form-control" [(ngModel)]='employee.id' hidden/>
+            </div>
+            <div class="form-group">
+                <label for="Email" class="control-label">Email</label>
+                <input type="text" id="Email" name="Email" class="form-control" [(ngModel)]='employee.email' disabled/>
+            </div>
+            <div class="form-group">
+                <label for="Name" class="control-label">Name</label>
+                <input type="text" id="Name" name="Name" class="form-control" [(ngModel)]='employee.name' required/>
+            </div>
+            <div class="form-group">
+                <label for="Surname" class="control-label">Surname</label>
+                <input type="text" id="Surname" name="Surname" class="form-control" [(ngModel)]='employee.surname' required/>
+            </div>
+            <div class="form-group">
+                <label for="Address" class="control-label">Address</label>
+                <input type="text" id="Address" name="Address" class="form-control" [(ngModel)]='employee.address' required/>
+            </div>
+            <div class="form-group">
+                <label for="Qualification" class="control-label">Qualification</label>
+                <input type="text" id="Qualification" name="Qualification" class="form-control" [(ngModel)]='employee.qualification' required/>
+            </div>
+            <div class="form-group">
+                <label for="ContactNumber" class="control-label">Contact Number</label>
+                <input type="number" id="ContactNumber" name="ContactNumber" class="form-control" [(ngModel)]='employee.contactNumber' required/>
+            </div>
+            <div class="form-group">
+                <label for="DepartmentId" class="control-label">Department</label>
+                <input type="number" id="DepartmentId" name="DepartmentId" class="form-control" [(ngModel)]='employee.departmentId' disabled/>
+            </div>
+            <div class="form-group">
+                <input [disabled]="!form.valid" class='btn btn-tomato' type="button" value="Update" (click)='update()'>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-tomato" [routerLink]="['/employee']">Back to List</a>
+</div>

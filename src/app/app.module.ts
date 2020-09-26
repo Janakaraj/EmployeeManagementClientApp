@@ -6,12 +6,16 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { DepartmentComponent } from './department/department.component';
-import { AdminComponent } from './admin/admin.component';
-import { DeveloperComponent } from './developer/developer.component';
 import { EmployeeProfileComponent } from './employee-profile/employee-profile.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { DepartmentDetailsComponent } from './department-details/department-details.component';
+import { EmployeeAddComponent } from './employee/employee-add/employee-add.component';
+import { DepartmentAddComponent } from './department/department-add/department-add.component';
+import { EmployeeEditComponent } from './employee/employee-edit/employee-edit.component';
+import { EmployeeRemoveComponent } from './employee/employee-remove/employee-remove.component';
+import { DepartmentRemoveComponent } from './department/department-remove/department-remove.component';
+import { DepartmentEditComponent } from './department/department-edit/department-edit.component';
 
 @NgModule({
   declarations: [
@@ -19,10 +23,14 @@ import { DepartmentDetailsComponent } from './department-details/department-deta
     HomeComponent,
     EmployeeComponent,
     DepartmentComponent,
-    AdminComponent,
-    DeveloperComponent,
     EmployeeProfileComponent,
-    DepartmentDetailsComponent
+    DepartmentDetailsComponent,
+    EmployeeAddComponent,
+    DepartmentAddComponent,
+    EmployeeEditComponent,
+    EmployeeRemoveComponent,
+    DepartmentRemoveComponent,
+    DepartmentEditComponent
   ],
   imports: [
     BrowserModule,

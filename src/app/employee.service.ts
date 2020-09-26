@@ -26,6 +26,32 @@ export class EmployeeService {
       catchError(this.handleError)
     );
   }
+  addEmployee(employee:Employee):void{
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+    var employeeJSON = JSON.stringify(employee);
+    console.log(employeeJSON);
+    this.http.post(this.url,employeeJSON,{headers: headers}).subscribe(
+      ()=>{
+        console.log("New employee added successfully.");
+        return this.getEmployees();
+      });
+  }
+  updateEmployee(id:number,employee:Employee):void{
+    this.http.put(this.url+`/${id}`, JSON.stringify(employee),{headers: new HttpHeaders({'Content-Type': 'application/json'})}).subscribe(
+      ()=>{
+        return this.getEmployees();
+      });
+  }
+  deleteEmployee(id:number):void{
+    if(confirm("Delete this employee?")){
+      this.http.delete(this.url+`/${id}`,{ responseType: 'text' }).subscribe(
+        ()=>{
+          console.log("One employee deleted successfully.");
+          return this.getEmployees();
+        });
+    }
+  }
   private handleError(err: HttpErrorResponse) {
     let errorMessage = '';
     if (err.error instanceof ErrorEvent) {

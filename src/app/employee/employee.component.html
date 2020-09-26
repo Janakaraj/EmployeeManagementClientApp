@@ -1,6 +1,6 @@
 <div>
     <h1>{{title}}</h1>
-    <button class="btn btn-tomato">Create New Employee</button>
+    <button class="btn btn-tomato" [routerLink]="['/addEmployee']">Create New Employee</button>
     <table class="table">
         <thead>
             <tr>
@@ -49,14 +49,14 @@
                     {{employee.contactNumber}}
                 </td>
                 <td>
-                    {{employee.departmentId}}
+                    {{employee.department.departmentName}}
                 </td>
                 <td>
                     <a [routerLink]="['/profile', employee.id]">Details</a>
                     <span> | </span>
-                    <a>Edit</a>
+                    <a [routerLink]="['/editEmployee', employee.id]">Edit</a>
                     <span> | </span>
-                    <a>Delete</a>
+                    <a [routerLink]="['/removeEmployee', employee.id]">Delete</a>
                 </td>
             </tr>
         </tbody>
