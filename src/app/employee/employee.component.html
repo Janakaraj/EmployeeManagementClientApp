@@ -52,11 +52,11 @@
                     {{employee.department.departmentName}}
                 </td>
                 <td>
-                    <a [routerLink]="['/profile', employee.id]">Details</a>
+                    <a class="text-tomato" [routerLink]="['/profile', employee.id]">Details</a>
                     <span> | </span>
-                    <a [routerLink]="['/editEmployee', employee.id]">Edit</a>
+                    <a class="text-tomato" [routerLink]="['/editEmployee', employee.id]">Edit</a>
                     <span> | </span>
-                    <a [routerLink]="['/removeEmployee', employee.id]">Delete</a>
+                    <a class="text-tomato" [routerLink]="['/removeEmployee', employee.id]">Delete</a>
                 </td>
             </tr>
         </tbody>

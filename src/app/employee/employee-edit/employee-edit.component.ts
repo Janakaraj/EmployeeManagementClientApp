@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DepartmentService } from 'src/app/department.service';
+import { Department } from 'src/app/department/department.model';
 import { EmployeeService } from 'src/app/employee.service';
 import { Employee } from '../employee.model';
 
@@ -11,6 +13,7 @@ import { Employee } from '../employee.model';
 export class EmployeeEditComponent implements OnInit {
 
   updateUserId: number = 0;
+  departments:Array<Department>;
   employee: Employee = {
     id: this.updateUserId,
     email: null,
@@ -22,7 +25,7 @@ export class EmployeeEditComponent implements OnInit {
     departmentId: null,
     department: null
   };
-  constructor(private employeeService: EmployeeService, private activatedRoute: ActivatedRoute, private route: Router) { }
+  constructor(private employeeService: EmployeeService, private activatedRoute: ActivatedRoute, private route: Router, private deptService:DepartmentService) { }
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe(e => {
@@ -30,6 +33,9 @@ export class EmployeeEditComponent implements OnInit {
     });
     this.employeeService.getEmployee(this.updateUserId).subscribe(e => {
       this.employee = e;
+    });
+    this.deptService.getDepartments().subscribe(e=>{
+      this.departments=e;
     });
   }
 

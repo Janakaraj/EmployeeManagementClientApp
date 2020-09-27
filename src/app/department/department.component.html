@@ -15,9 +15,9 @@
                 {{department.departmentName}}
             </td>
             <td>
-                <a [routerLink]="['/departmentDetails', department.departmentId]">Details</a> |
-                <a [routerLink]="['/editDepartment', department.departmentId]">Edit</a> |
-                <a [routerLink]="['/removeDepartment', department.departmentId]">Delete</a>
+                <a class="text-tomato" [routerLink]="['/departmentDetails', department.departmentId]">Details</a> |
+                <a class="text-tomato" [routerLink]="['/editDepartment', department.departmentId]">Edit</a> |
+                <a class="text-tomato" [routerLink]="['/removeDepartment', department.departmentId]">Delete</a>
             </td>
         </tr>
     </tbody>

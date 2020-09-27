@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DepartmentService } from 'src/app/department.service';
+import { Department } from 'src/app/department/department.model';
 import { EmployeeService } from 'src/app/employee.service';
 import { Employee } from '../employee.model';
 
@@ -21,9 +22,13 @@ export class EmployeeAddComponent implements OnInit {
     departmentId: null,
     department: null
   };
-  constructor(private employeeService: EmployeeService, private route: Router) { }
+  departments: Array<Department>;
+  constructor(private employeeService: EmployeeService, private route: Router, private deptService:DepartmentService) { }
 
   ngOnInit(): void {
+    this.deptService.getDepartments().subscribe(e=>{
+      this.departments=e;
+    });
   }
   add(): void {
     this.employeeService.addEmployee(this.employee);

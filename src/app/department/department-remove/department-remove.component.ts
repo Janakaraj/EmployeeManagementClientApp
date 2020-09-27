@@ -14,14 +14,14 @@ export class DepartmentRemoveComponent implements OnInit {
   removeDeptId: number;
   department:Department;
   ngOnInit(): void {
-  }
-  delete() {
     this.activatedRoute.paramMap.subscribe(e => {
       this.removeDeptId = +e.get('id');
     });
     this.deptService.getDepartment(this.removeDeptId).subscribe(e=>{
       this.department=e;
     });
+  }
+  delete() {
     this.deptService.deleteDepartment(this.removeDeptId);
     this.route.navigate(['/department']).then(() => {
       window.location.reload();

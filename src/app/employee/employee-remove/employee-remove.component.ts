@@ -14,14 +14,14 @@ export class EmployeeRemoveComponent implements OnInit {
   removeEmploeeId: number;
   employee:Employee;
   ngOnInit(): void {
-  }
-  delete() {
     this.activatedRoute.paramMap.subscribe(e => {
       this.removeEmploeeId = +e.get('id');
     });
     this.employeeService.getEmployee(this.removeEmploeeId).subscribe(e=>{
       this.employee=e;
     });
+  }
+  delete() {
     this.employeeService.deleteEmployee(this.removeEmploeeId);
     this.route.navigate(['/employee']).then(() => {
       window.location.reload();

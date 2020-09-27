@@ -34,7 +34,9 @@
             </div>
             <div class="form-group">
                 <label for="DepartmentId" class="control-label">Department</label>
-                <input type="number" id="DepartmentId" name="DepartmentId" class="form-control" [(ngModel)]='employee.departmentId' disabled/>
+                <select id="DepartmentId" name="DepartmentId" class="form-control" [(ngModel)]='employee.departmentId' required>
+                    <option *ngFor='let department of departments' [ngValue]="department.departmentId">{{department.departmentName}}</option>
+                </select>
             </div>
             <div class="form-group">
                 <input [disabled]="!form.valid" class='btn btn-tomato' type="button" value="Update" (click)='update()'>
