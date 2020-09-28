@@ -10,14 +10,30 @@ import { Department } from './department/department.model';
 export class DepartmentService {
   private url = 'https://localhost:44339/api/DepartmentsApi';
   constructor(private http: HttpClient) { }
+
   getDepartments(): Observable<Department[]> {
-    return this.http.get<Department[]>(this.url).pipe(
+    //let headers = new HttpHeaders();
+    let authToken = localStorage.getItem('auth_token');
+    //headers.append('Content-Type', 'application/json');
+    var header = {
+      headers: new HttpHeaders()
+        .set('Authorization',  `Basic ${authToken}`)
+    }
+    //headers.append('Authorization', 'Bearer ' +authToken);
+    //let options = { headers: headers };
+    console.log('Bearer ' +authToken);
+    return this.http.get<Department[]>(this.url,header).pipe(
       tap(data => console.log('All: ' + JSON.stringify(data))),
       catchError(this.handleError)
     );
   }
+
   getDepartment(id: number): Observable<Department> {
-    return this.http.get<Department>(this.url + `/${id}`).pipe(
+    let headers = new HttpHeaders();
+    let authToken = localStorage.getItem('auth_token');
+    headers.append('Authorization', `Bearer ${authToken}`);
+
+    return this.http.get<Department>(this.url + `/${id}`,{headers}).pipe(
       tap(data => console.log('All: ' + JSON.stringify(data))),
       catchError(this.handleError)
     );

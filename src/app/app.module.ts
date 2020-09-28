@@ -7,7 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { DepartmentComponent } from './department/department.component';
 import { EmployeeProfileComponent } from './employee-profile/employee-profile.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { DepartmentDetailsComponent } from './department-details/department-details.component';
 import { EmployeeAddComponent } from './employee/employee-add/employee-add.component';
@@ -16,6 +16,11 @@ import { EmployeeEditComponent } from './employee/employee-edit/employee-edit.co
 import { EmployeeRemoveComponent } from './employee/employee-remove/employee-remove.component';
 import { DepartmentRemoveComponent } from './department/department-remove/department-remove.component';
 import { DepartmentEditComponent } from './department/department-edit/department-edit.component';
+import { LoginComponent } from './userAuth/login/login.component';
+import { LogoutComponent } from './userAuth/logout/logout.component';
+import { ForgotPasswordComponent } from './userAuth/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './userAuth/reset-password/reset-password.component';
+import { AuthInterceptor } from './auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -30,7 +35,11 @@ import { DepartmentEditComponent } from './department/department-edit/department
     EmployeeEditComponent,
     EmployeeRemoveComponent,
     DepartmentRemoveComponent,
-    DepartmentEditComponent
+    DepartmentEditComponent,
+    LoginComponent,
+    LogoutComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +47,13 @@ import { DepartmentEditComponent } from './department/department-edit/department
     FormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide : HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi   : true,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
