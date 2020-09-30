@@ -1,5 +1,5 @@
 <h1>Departments</h1>
-    <button class="btn btn-tomato" [routerLink]="['/addDepartment']">Create New Department</button>
+    <button *ngIf='isAdmin' class="btn btn-tomato" [routerLink]="['/addDepartment']">Create New Department</button>
 <table class="table">
     <thead>
         <tr>
@@ -15,9 +15,11 @@
                 {{department.departmentName}}
             </td>
             <td>
-                <a class="text-tomato" [routerLink]="['/departmentDetails', department.departmentId]">Details</a> |
-                <a class="text-tomato" [routerLink]="['/editDepartment', department.departmentId]">Edit</a> |
-                <a class="text-tomato" [routerLink]="['/removeDepartment', department.departmentId]">Delete</a>
+                <a class="text-tomato" [routerLink]="['/departmentDetails', department.departmentId]">Details</a> 
+                <span *ngIf='isAdmin'> | </span>
+                <a *ngIf='isAdmin' class="text-tomato" [routerLink]="['/editDepartment', department.departmentId]">Edit</a> 
+                <span *ngIf='isAdmin'> | </span>
+                <a *ngIf='isAdmin' class="text-tomato" [routerLink]="['/removeDepartment', department.departmentId]">Delete</a>
             </td>
         </tr>
     </tbody>

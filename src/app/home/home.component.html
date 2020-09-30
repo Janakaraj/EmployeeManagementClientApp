@@ -1,8 +1,16 @@
 <div class="text-center">
-
+<div *ngIf='!userName'>
     <h1 style="margin-top:7rem;">Welcome, <span class="text-tomato">User</span></h1>
     <p>
         Please <a class="text-tomato" [routerLink]="['/login']">Login</a> to continue.
     </p>
+</div>
+<div *ngIf='userName'>
+    <h1 style="margin-top:7rem;">Welcome, <span class="text-tomato">{{userName}}</span></h1>
+    <p>
+        You are logged in as <span class="text-tomato">{{role}}</span>.
+    </p>
+</div>
+    
 
 </div>

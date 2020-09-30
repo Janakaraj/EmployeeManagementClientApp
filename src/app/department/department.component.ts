@@ -9,10 +9,15 @@ import { Department } from './department.model';
 })
 export class DepartmentComponent implements OnInit {
   errorMessage: string;
+  role:string = localStorage.getItem('userRole');
+  isAdmin: boolean;
 
   constructor(private departmentService: DepartmentService) { }
   departments: Array<Department>;
   ngOnInit(): void {
+    if(this.role=="Admin"){
+      this.isAdmin=true;
+    }
     this.departmentService.getDepartments().subscribe(e => {
       this.departments = e;
     },

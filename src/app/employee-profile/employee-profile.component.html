@@ -46,6 +46,7 @@
                 {{employee.department.departmentName}}
             </dd>
         </dl>
-      <a class="btn btn-tomato" [routerLink]="['/editEmployee', employee.id]">Edit</a> | 
+      <a *ngIf="show" class="btn btn-tomato" [routerLink]="['/editEmployee', employee.id]">Edit</a> 
+      <span *ngIf="show"> | </span>
       <a class="btn btn-tomato" routerLink="/employee">Back to List</a>
   </div>

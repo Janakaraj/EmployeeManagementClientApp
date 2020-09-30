@@ -11,3 +11,9 @@ color: tomato !important;
 .active{
     color: tomato !important;
 }
+.text-name{
+    margin-left:5px;
+    margin-right:25px;
+    color:#fff;
+
+}

@@ -21,6 +21,7 @@ import { LogoutComponent } from './userAuth/logout/logout.component';
 import { ForgotPasswordComponent } from './userAuth/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './userAuth/reset-password/reset-password.component';
 import { AuthInterceptor } from './auth.interceptor';
+import { AccessDeniedComponent } from './access-denied/access-denied.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { AuthInterceptor } from './auth.interceptor';
     LoginComponent,
     LogoutComponent,
     ForgotPasswordComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    AccessDeniedComponent
   ],
   imports: [
     BrowserModule,

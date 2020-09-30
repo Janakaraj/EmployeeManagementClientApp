@@ -10,10 +10,15 @@ import { Employee } from '../employee/employee.model';
 })
 export class EmployeeProfileComponent implements OnInit {
   employee:Employee;
+  role:string = localStorage.getItem('userRole');
+  show:boolean= true;
   eid:number;
   constructor( private empService: EmployeeService, private route:ActivatedRoute) { }
 
   ngOnInit(): void {
+    if(this.role == "Employee"){
+      this.show=false;
+    }
     this.route.paramMap
     .subscribe(i=>{
       this.eid=+i.get('id');
