@@ -12,7 +12,6 @@ export class HrGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
     var userRole = localStorage.getItem('userRole');
-    console.log(userRole);
     if (userRole == "HR" || userRole == "Admin") {
       return true;
     }

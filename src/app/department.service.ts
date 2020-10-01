@@ -12,18 +12,13 @@ export class DepartmentService {
   constructor(private http: HttpClient) { }
 
   getDepartments(): Observable<Department[]> {
-    //let headers = new HttpHeaders();
     let authToken = localStorage.getItem('auth_token');
-    //headers.append('Content-Type', 'application/json');
     var header = {
       headers: new HttpHeaders()
         .set('Authorization',  `Basic ${authToken}`)
     }
-    //headers.append('Authorization', 'Bearer ' +authToken);
-    //let options = { headers: headers };
-    console.log('Bearer ' +authToken);
     return this.http.get<Department[]>(this.url,header).pipe(
-      tap(data => console.log('All: ' + JSON.stringify(data))),
+      tap(data => console.log("Departments fetched successfully")),
       catchError(this.handleError)
     );
   }
@@ -34,7 +29,7 @@ export class DepartmentService {
     headers.append('Authorization', `Bearer ${authToken}`);
 
     return this.http.get<Department>(this.url + `/${id}`,{headers}).pipe(
-      tap(data => console.log('All: ' + JSON.stringify(data))),
+      tap(data => console.log("Department fetched successfully.")),
       catchError(this.handleError)
     );
   }
@@ -51,6 +46,7 @@ export class DepartmentService {
   updateDepartment(id: number, department: Department): void {
     this.http.put(this.url + `/${id}`, JSON.stringify(department), { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }).subscribe(
       () => {
+        console.log("One department updateed successfully.");
         return this.getDepartments();
       });
   }

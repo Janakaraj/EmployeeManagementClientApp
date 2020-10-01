@@ -18,7 +18,6 @@ export class LoginService {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json; charset=utf-8');
     var userJSON = JSON.stringify(user);
-    console.log(userJSON);
     this.http.post(this.url, userJSON, { headers: headers }).subscribe(
       resp => {
         var res = JSON.parse(JSON.stringify(resp));
@@ -29,6 +28,7 @@ export class LoginService {
         localStorage.setItem('userRole', decodedJwtJsonData.role);
         this.role = decodedJwtJsonData.role;
         this.userName = decodedJwtJsonData.name;
+        console.log("Login successFull.");
         this.route.navigate(['/home'])
           .then(() => {
             window.location.reload();
@@ -41,6 +41,7 @@ export class LoginService {
     localStorage.clear();
     this.role = null;
     this.userName = null;
+    console.log("Logout successFull.");
     this.route.navigate(['/home']).then(() => {
       window.location.reload();
     });

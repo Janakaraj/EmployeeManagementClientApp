@@ -15,14 +15,14 @@ export class EmployeeService {
   employees:Observable<Employee[]>;
   getEmployees():Observable<Employee[]>{
     return this.http.get<Employee[]>(this.url).pipe(
-      tap(data => console.log('All: ' + JSON.stringify(data))),
+      tap(data => console.log("Employees fetched successfully")),
       catchError(this.handleError)
     );
   }
   
   getEmployee(id:number):Observable<Employee>{
     return this.http.get<Employee>(this.url+`/${id}`).pipe(
-      tap(data => console.log('All: ' + JSON.stringify(data))),
+      tap(data => console.log("Employee fetched successfully")),
       catchError(this.handleError)
     );
   }
@@ -30,7 +30,6 @@ export class EmployeeService {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json; charset=utf-8');
     var employeeJSON = JSON.stringify(employee);
-    console.log(employeeJSON);
     this.http.post(this.url,employeeJSON,{headers: headers}).subscribe(
       ()=>{
         console.log("New employee added successfully.");
@@ -40,8 +39,10 @@ export class EmployeeService {
   updateEmployee(id:number,employee:Employee):void{
     this.http.put(this.url+`/${id}`, JSON.stringify(employee),{headers: new HttpHeaders({'Content-Type': 'application/json'})}).subscribe(
       ()=>{
+        console.log("One employee updated successfully.");
         return this.getEmployees();
-      });
+      },
+      catchError(this.handleError));
   }
   deleteEmployee(id:number):void{
     if(confirm("Delete this employee?")){
@@ -49,7 +50,8 @@ export class EmployeeService {
         ()=>{
           console.log("One employee deleted successfully.");
           return this.getEmployees();
-        });
+        },
+        catchError(this.handleError));
     }
   }
   private handleError(err: HttpErrorResponse) {
