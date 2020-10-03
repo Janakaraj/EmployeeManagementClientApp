@@ -6,7 +6,11 @@
         <form #form="ngForm">
             <div class="form-group">
                 <label for="DepartmentName" class="control-label">Name</label>
-                <input type="text" id="DepartmentName" name="DepartmentName" class="form-control" [(ngModel)]='department.departmentName' required/>
+                <input type="text" id="DepartmentName" name="DepartmentName" class="form-control"
+                    [(ngModel)]='department.departmentName' required #name="ngModel" />
+                <div class="alert-danger" *ngIf="name.errors && (name.dirty || name.touched)" style="padding:2px;">
+                    <span *ngIf="name.errors.required">Name is required</span>
+                </div>
             </div>
             <div class="form-group">
                 <input [disabled]="!form.valid" class='btn btn-tomato' type="button" value="Add" (click)='add()'>

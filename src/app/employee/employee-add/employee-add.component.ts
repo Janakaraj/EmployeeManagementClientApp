@@ -32,8 +32,8 @@ export class EmployeeAddComponent implements OnInit {
   }
   add(): void {
     this.employeeService.addEmployee(this.employee);
-    this.route.navigate(['/employee']).then(() => {
-      window.location.reload();
+     this.route.navigate(['/employee']).then(() => {
+       window.location.reload();
     });
   }
 }
