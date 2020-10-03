@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CheckboxRequiredValidator } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/login.service';
 import { LoginDetails } from '../login-details.model';
@@ -9,17 +10,15 @@ import { LoginDetails } from '../login-details.model';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-  constructor(private loginService:LoginService, private route:Router) { }
+  constructor(private loginService: LoginService, private route: Router) { }
   loginDetails: LoginDetails = {
-    email:null,
-    password:null,
-    rememberMe:false
+    email: null,
+    password: null,
+    rememberMe: false
   };
   ngOnInit(): void {
   }
-  login(){
+  login() {
     this.loginService.sendUserDetails(this.loginDetails);
   }
-
 }

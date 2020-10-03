@@ -19,7 +19,6 @@ import { EmployeeGuard } from './userAuth/guards/employee.guard';
 import { HrGuard } from './userAuth/guards/hr.guard';
 import { LoginComponent } from './userAuth/login/login.component';
 import { LogoutComponent } from './userAuth/logout/logout.component';
-import { ResetPasswordComponent } from './userAuth/reset-password/reset-password.component';
 
 
 const routes: Routes = [
@@ -37,7 +36,6 @@ const routes: Routes = [
   { path: 'login', component:LoginComponent},
   { path: 'logout', component:LogoutComponent},
   { path: 'forgotPassword', component:ForgotPasswordComponent},
-  { path: 'resetPassword', component:ResetPasswordComponent},
   { path: 'accessDenied', component: AccessDeniedComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full'}
 ];

@@ -19,7 +19,6 @@ import { DepartmentEditComponent } from './department/department-edit/department
 import { LoginComponent } from './userAuth/login/login.component';
 import { LogoutComponent } from './userAuth/logout/logout.component';
 import { ForgotPasswordComponent } from './userAuth/forgot-password/forgot-password.component';
-import { ResetPasswordComponent } from './userAuth/reset-password/reset-password.component';
 import { AuthInterceptor } from './auth.interceptor';
 import { AccessDeniedComponent } from './access-denied/access-denied.component';
 
@@ -40,7 +39,6 @@ import { AccessDeniedComponent } from './access-denied/access-denied.component';
     LoginComponent,
     LogoutComponent,
     ForgotPasswordComponent,
-    ResetPasswordComponent,
     AccessDeniedComponent
   ],
   imports: [
