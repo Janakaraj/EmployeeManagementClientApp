@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
   loggedIn: boolean = false;
   userName: string = localStorage.getItem('userName');
   employees: Array<Employee>;
+  willBlink : boolean;
   id: number;
   private hubConnection: signalR.HubConnection;
   notificationList: Array<string> = [];
@@ -45,6 +46,7 @@ export class AppComponent implements OnInit {
           localStorage.setItem('noti', noti);
           snd.play();
           this.notificationList.push(noti);
+          this.willBlink=true;
         });
         this.hubConnection.on('sendEditProfileMessage', (name) => {
           var noti = name + " edited their profile";
@@ -52,6 +54,7 @@ export class AppComponent implements OnInit {
           console.log(localStorage.getItem('noti'));
           snd.play();
           this.notificationList.push(noti);
+          this.willBlink=true;
         });
       }
       else if(localStorage.getItem('userRole')=="Employee"){
@@ -61,6 +64,7 @@ export class AppComponent implements OnInit {
           console.log(localStorage.getItem('noti'));
           snd.play();
           this.notificationList.push(noti);
+          this.willBlink=true;
         });
       }
       else if(localStorage.getItem('userRole')=="Admin"){
@@ -70,6 +74,7 @@ export class AppComponent implements OnInit {
           console.log(localStorage.getItem('noti'));
           snd.play();
           this.notificationList.push(noti);
+          this.willBlink=true;
         });
       }
     }
@@ -92,5 +97,8 @@ export class AppComponent implements OnInit {
   }
   logout() {
     this.loginService.logout();
+  }
+  blink(){
+    this.willBlink=false;
   }
 }

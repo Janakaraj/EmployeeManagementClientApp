@@ -37,3 +37,7 @@ a.text-tomato:hover{
 .btn-outline-tomato:not(:disabled):not(.disabled).active:focus,
 .btn-outline-tomato:not(:disabled):not(.disabled):active:focus,.show>
 .btn-outline-tomato.dropdown-toggle:focus{box-shadow:0 0 0 .1rem rgba(255,99,71)}
+
+.badge-tomato{color:#212529;background-color:tomato}
+a.badge-tomato:focus,a.badge-tomato:hover{color:#212529;background-color:tomato}
+a.badge-tomato.focus,a.badge-tomato:focus{outline:0;box-shadow:0 0 0 .2rem rgba(255,99,71)}
