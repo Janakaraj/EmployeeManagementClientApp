@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   loggedIn: boolean = false;
   userName: string = localStorage.getItem('userName');
   employees: Array<Employee>;
-  willBlink : boolean;
+  willBlink: boolean;
   id: number;
   private hubConnection: signalR.HubConnection;
   notificationList: Array<string> = [];
@@ -23,30 +23,29 @@ export class AppComponent implements OnInit {
   }
   ngOnInit(): void {
     var snd = new Audio();
-    snd.src="https://notificationsounds.com/soundfiles/9cf81d8026a9018052c429cc4e56739b/file-sounds-1145-when.mp3",
-    "https://notificationsounds.com/soundfiles/9cf81d8026a9018052c429cc4e56739b/file-sounds-1145-when.ogg",
-    "https://notificationsounds.com/soundfiles/9cf81d8026a9018052c429cc4e56739b/file-sounds-1145-when.wav";
-    console.log(localStorage.getItem('auth_token'));
+    snd.src = "https://notificationsounds.com/soundfiles/9cf81d8026a9018052c429cc4e56739b/file-sounds-1145-when.mp3",
+      "https://notificationsounds.com/soundfiles/9cf81d8026a9018052c429cc4e56739b/file-sounds-1145-when.ogg",
+      "https://notificationsounds.com/soundfiles/9cf81d8026a9018052c429cc4e56739b/file-sounds-1145-when.wav";
+
     if (localStorage.getItem('auth_token')) {
       this.loggedIn = true;
       this.getId();
       this.hubConnection = new signalR.HubConnectionBuilder()
-      .configureLogging(signalR.LogLevel.Debug)
-      .withUrl('https://localhost:44339/NotificationHub')
-      .build();
-    this.hubConnection
-      .start()
-      .then(() => {
-        console.log('Connection started');
-      })
-      .catch(err => console.log('Error while starting connection: ' + err))
-      if(localStorage.getItem('userRole')=="HR"){
+        .configureLogging(signalR.LogLevel.Debug)
+        .withUrl('https://localhost:44339/NotificationHub', { accessTokenFactory: () => localStorage.getItem('auth_token') })
+        .build();
+      this.hubConnection
+        .start()
+        .then(() => {
+          console.log('Connection started');
+        })
+        .catch(err => console.log('Error while starting connection: ' + err))
         this.hubConnection.on('sendAddDepartmentMessage', (name) => {
           var noti = name + " " + " department was added by admin";
           localStorage.setItem('noti', noti);
           snd.play();
           this.notificationList.push(noti);
-          this.willBlink=true;
+          this.willBlink = true;
         });
         this.hubConnection.on('sendEditProfileMessage', (name) => {
           var noti = name + " edited their profile";
@@ -54,34 +53,22 @@ export class AppComponent implements OnInit {
           console.log(localStorage.getItem('noti'));
           snd.play();
           this.notificationList.push(noti);
-          this.willBlink=true;
+          this.willBlink = true;
         });
-      }
-      else if(localStorage.getItem('userRole')=="Employee"){
-        this.hubConnection.on('sendAddEmployeeMessage', (name, surname) => {
-          var noti = name + " " + surname + " was added to by admin/hr";
-          localStorage.setItem('noti', noti);
-          console.log(localStorage.getItem('noti'));
-          snd.play();
-          this.notificationList.push(noti);
-          this.willBlink=true;
-        });
-      }
-      else if(localStorage.getItem('userRole')=="Admin"){
-        this.hubConnection.on('sendEditProfileMessage', (name) => {
-          var noti = name + " edited their profile";
-          localStorage.setItem('noti', noti);
-          console.log(localStorage.getItem('noti'));
-          snd.play();
-          this.notificationList.push(noti);
-          this.willBlink=true;
-        });
-      }
+      
+      this.hubConnection.on('sendAddEmployeeMessage', (name, surname) => {
+        var noti = name + " " + surname + " was added to by admin/hr to your department";
+        localStorage.setItem('noti', noti);
+        console.log(localStorage.getItem('noti'));
+        snd.play();
+        this.notificationList.push(noti);
+        this.willBlink = true;
+      });
     }
     else {
       this.loggedIn = false;
     }
-     
+
   }
   getId() {
     this.employeeService.getEmployees().subscribe(e => {
@@ -98,7 +85,7 @@ export class AppComponent implements OnInit {
   logout() {
     this.loginService.logout();
   }
-  blink(){
-    this.willBlink=false;
+  blink() {
+    this.willBlink = false;
   }
 }
