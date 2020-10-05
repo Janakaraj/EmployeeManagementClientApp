@@ -21,6 +21,10 @@ export class AppComponent implements OnInit {
 
   }
   ngOnInit(): void {
+    var snd = new Audio();
+    snd.src="https://notificationsounds.com/soundfiles/9cf81d8026a9018052c429cc4e56739b/file-sounds-1145-when.mp3",
+    "https://notificationsounds.com/soundfiles/9cf81d8026a9018052c429cc4e56739b/file-sounds-1145-when.ogg",
+    "https://notificationsounds.com/soundfiles/9cf81d8026a9018052c429cc4e56739b/file-sounds-1145-when.wav";
     console.log(localStorage.getItem('auth_token'));
     if (localStorage.getItem('auth_token')) {
       this.loggedIn = true;
@@ -39,12 +43,14 @@ export class AppComponent implements OnInit {
         this.hubConnection.on('sendAddDepartmentMessage', (name) => {
           var noti = name + " " + " department was added by admin";
           localStorage.setItem('noti', noti);
+          snd.play();
           this.notificationList.push(noti);
         });
         this.hubConnection.on('sendEditProfileMessage', (name) => {
           var noti = name + " edited their profile";
           localStorage.setItem('noti', noti);
           console.log(localStorage.getItem('noti'));
+          snd.play();
           this.notificationList.push(noti);
         });
       }
@@ -53,6 +59,7 @@ export class AppComponent implements OnInit {
           var noti = name + " " + surname + " was added to by admin/hr";
           localStorage.setItem('noti', noti);
           console.log(localStorage.getItem('noti'));
+          snd.play();
           this.notificationList.push(noti);
         });
       }
@@ -61,6 +68,7 @@ export class AppComponent implements OnInit {
           var noti = name + " edited their profile";
           localStorage.setItem('noti', noti);
           console.log(localStorage.getItem('noti'));
+          snd.play();
           this.notificationList.push(noti);
         });
       }
